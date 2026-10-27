@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>오늘도 공부 💙</title>
+<style>
+:root{--blue:#65b6f7;--blue2:#e8f5ff;--ink:#20466f;--muted:#7892ad;--line:#d9ebfb;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#f2f9ff,#fff 55%,#edf7ff);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:var(--ink)}
+button,input,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:10px 14px;background:var(--blue);color:white;font-weight:700}button.secondary{background:#edf7ff;color:#357fbe;border:1px solid var(--line)}button:disabled{opacity:.5;cursor:not-allowed}
+header{height:66px;background:#ffffffed;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:2}
+.brand{font-weight:900;font-size:21px;color:#164c83}.brand span{font-size:24px;margin-right:7px}
+.shell{max-width:1240px;margin:22px auto;padding:0 16px;display:grid;grid-template-columns:165px minmax(0,1fr) 275px;gap:18px}
+nav,.panel,.post,.welcome{background:white;border:1px solid var(--line);border-radius:16px;box-shadow:0 4px 16px #9dc9e512}
+nav{padding:12px;height:max-content;position:sticky;top:82px}nav button{display:block;width:100%;text-align:left;margin:3px 0;background:transparent;color:#6884a0;font-weight:600}nav button.active,nav button:hover{background:var(--blue2);color:#287ec0}
+main{min-width:0}.welcome{padding:22px;background:linear-gradient(115deg,#e4f3ff,#f8fcff);margin-bottom:16px}.welcome h2{margin:0 0 6px;font-size:21px}.welcome p{margin:0;color:#6b91b5;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.stat{background:#ffffffdc;border:1px solid var(--line);border-radius:12px;padding:13px}.stat small{display:block;color:#6f8ca9}.stat strong{font-size:25px;display:block;margin-top:4px}
+.feedhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:16px 2px}.feedhead h3{margin:0}.feed{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.post{overflow:hidden}.posttop{display:flex;align-items:center;gap:8px;padding:12px}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#e4f3ff;font-size:20px;flex-shrink:0}.posttop small{color:var(--muted);margin-left:auto}.photo{width:100%;height:225px;object-fit:cover;background:#eff8ff;display:block}.nopicture{height:160px;display:grid;place-items:center;background:linear-gradient(135deg,#dcefff,#f9fcff);font-size:40px}.postbody{padding:13px}.postbody p{margin:0 0 10px;overflow-wrap:anywhere}.tags{color:#3988c9;font-size:12px;margin-bottom:10px}.actions{display:flex;gap:14px;align-items:center;color:#7993ac}.actions button{padding:4px 7px;background:transparent;color:#5e9fd6}.comments{padding:0 13px 12px}.comments p{font-size:13px;margin:6px 0}.commentrow{display:flex;gap:6px}.commentrow input{min-width:0;width:100%;padding:8px;border:1px solid var(--line);border-radius:9px}
+.side{display:flex;flex-direction:column;gap:14px}.panel{padding:15px}.panel h3{font-size:16px;margin:0 0 12px}.rankrow{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #eef6fc;font-size:13px}.rankrow:last-child{border:0}.rankrow b{margin-left:auto}.ranknum{color:#68a9e4;font-weight:800}.goalitem{display:flex;gap:8px;margin:10px 0;font-size:13px}.goalitem input{accent-color:var(--blue)}.goalbar{height:7px;background:#eaf4fd;border-radius:9px;overflow:hidden;margin-top:12px}.goalbar span{display:block;height:100%;background:var(--blue);width:0}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;text-align:center;font-size:12px}.calendar span{padding:7px 0;border-radius:9px}.calendar .done{background:#69b7f8;color:white;font-weight:800}.calendar .weekday{color:#7796b4;font-weight:700}
+.modalback{position:fixed;inset:0;background:#183b5b66;display:none;align-items:center;justify-content:center;padding:16px;z-index:5}.modal{background:white;width:min(500px,100%);padding:22px;border-radius:18px;box-shadow:0 20px 60px #123b5c40}.modal h2{margin-top:0}.field{display:block;margin:12px 0}.field span{display:block;font-size:13px;margin-bottom:5px;color:#6584a1}.field input,.field textarea{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px}.field textarea{min-height:85px;resize:vertical}.modalactions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.hint{font-size:12px;color:#7892ad;line-height:1.6}.empty{grid-column:1/-1;text-align:center;padding:35px;color:#7997b4;background:white;border:1px dashed var(--line);border-radius:15px}
+footer{text-align:center;color:#91a7bc;font-size:12px;padding:25px}
+@media(max-width:950px){.shell{grid-template-columns:135px minmax(0,1fr)}.side{grid-column:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}nav{grid-row:1 / span 2}}
+@media(max-width:650px){header{padding:0 14px}.shell{display:flex;flex-direction:column;margin:12px auto;gap:12px}nav{position:static;display:flex;overflow:auto;padding:6px;gap:4px}nav button{white-space:nowrap;width:auto;margin:0;padding:9px}.side{display:grid;grid-template-columns:1fr 1fr}.feed{grid-template-columns:1fr}.photo{height:260px}.stats{gap:6px}.stat{padding:10px}.stat strong{font-size:21px}.welcome{padding:17px}.side .panel{min-width:0}}
+
+.rulebox{background:#fff;border:1px solid #d7eafa;border-radius:16px;padding:16px;margin:0 0 16px;box-shadow:0 4px 16px #9dc9e512}
+.rulebox h3{margin:0 0 6px}.rulebox p{font-size:12px;color:#7892ad;line-height:1.6}
+.tablewrap{overflow-x:auto}table.rules{border-collapse:collapse;width:100%;min-width:620px;font-size:13px}
+table.rules th,table.rules td{border:1px solid #cbd8e3;padding:7px 5px;text-align:center}
+table.rules th{background:#eaf5ff;color:#24517b}table.rules td:first-child{font-weight:700;background:#f4f8fb;text-align:left;white-space:nowrap}
+table.rules .total{font-weight:900;color:#d45b69;background:#fff7f7}
+.countctl{display:flex;justify-content:center;align-items:center;gap:5px}.countctl button{padding:2px 8px;border-radius:7px}.countctl .minus{background:#edf6ff;color:#327db7}
+.ruletext{white-space:pre-line;background:#f5faff;border:1px solid #d7eafa;border-radius:10px;padding:10px;font-size:13px;line-height:1.7;margin-top:10px}
+@media(max-width:650px){.rulebox{padding:12px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><span>☁️</span>오늘도 공부</div><div id="userBadge">💙 <span id="currentNick">게스트</span></div></header>
+<div class="shell">
+<nav>
+<button class="active" data-view="home">⌂　홈</button><button data-view="feed">☑　플래너 인증</button><button data-view="friends">♧　친구들 보기</button><button data-view="rank">♜　랭킹</button><button data-view="calendar">▦　캘린더</button><button data-view="goals">◎　내 목표</button><button data-view="profile">☻　닉네임 변경</button>
+<div style="margin-top:22px;padding:13px 9px;border-radius:12px;background:linear-gradient(#e2f3ff,#f7fbff);font-size:13px;color:#6488a9;line-height:1.8">☁️<br>오늘도 스스로를<br>응원해요! 💙</div>
+</nav>
+<main>
+<section class="welcome"><h2 id="welcomeTitle">오늘도 파이팅이에요! ☁️</h2><p>꾸준한 인증이 습관이 돼요!</p><div class="stats"><div class="stat"><small>연속 인증</small><strong id="streak">0일</strong></div><div class="stat"><small>내 인증 횟수</small><strong id="total">0회</strong></div><div class="stat"><small>이번 주 인증</small><strong id="weekly">0회</strong></div></div></section>
+
+<section class="rulebox" id="ruleBox">
+ <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+  <h3>📋 플래너 인증 규칙표</h3><button class="secondary" id="resetRules" style="font-size:12px;padding:6px 9px">숫자 초기화</button>
+ </div>
+ <p>보내준 엑셀 사진을 바탕으로 만들었어. + / − 버튼을 누르면 항목별 숫자와 합계가 자동으로 바뀌어.</p>
+ <div class="tablewrap"><table class="rules"><thead><tr><th>이름</th><th>영통 안 들어옴</th><th>플래너 안 올림</th><th>플래너 안 지킴</th><th>공부 한 시간 미만</th><th>합계</th></tr></thead><tbody id="ruleRows"></tbody></table></div>
+ <div class="ruletext" id="ruleText"></div>
+ <p>※ 사진 속 규칙 문구 일부가 흐릿해서 읽히는 내용으로 옮겼어. 아래 버튼으로 문구와 참여자 이름을 수정할 수 있어.</p>
+ <button class="secondary" id="editRuleText" style="font-size:12px;padding:6px 9px">규칙 문구 수정</button>
+ <button class="secondary" id="editNames" style="font-size:12px;padding:6px 9px">이름 수정</button>
+</section>
+
+<div class="feedhead"><h3 id="feedTitle">친구들 인증</h3><button id="addPost">✎ 플래너 인증하기</button></div>
+<div class="feed" id="feed"></div>
+</main>
+<aside class="side">
+<section class="panel"><h3>🏆 이번 주 랭킹</h3><div id="ranking"></div></section>
+<section class="panel"><h3 id="calendarTitle">📅 인증 달력</h3><div class="calendar" id="calendar"></div></section>
+<section class="panel"><h3>🎯 오늘의 목표 <button class="secondary" id="editGoals" style="float:right;padding:4px 8px;font-size:12px">수정</button></h3><div id="goals"></div><div class="goalbar"><span id="goalProgress"></span></div><p id="goalPercent" style="text-align:right;font-size:12px;color:#7392ae;margin:7px 0 0">0%</p></section>
+<section class="panel"><h3>💌 사이트 안내</h3><p class="hint">친구들과 플래너를 인증하고 서로 응원해요. 사진에 학교 이름, 전화번호 등 개인정보가 나오지 않는지 확인해 주세요.</p></section>
+</aside>
+</div>
+<footer>오늘도 공부 💙 서로의 꾸준함을 응원해요.</footer>
+<div class="modalback" id="nickModal"><div class="modal"><h2>반가워요! 💙</h2><p>사용할 닉네임을 정해 주세요.</p><label class="field"><span>닉네임</span><input id="nickInput" maxlength="18" placeholder="예: 하늘이"></label><p class="hint">이 데모는 닉네임만으로 시작해요. 실제 온라인 공개 버전에서는 닉네임 중복과 계정 보호 기능이 추가로 필요해요.</p><div class="modalactions"><button id="saveNick">시작하기</button></div></div></div>
+<div class="modalback" id="postModal"><div class="modal"><h2>오늘의 플래너 인증 ✨</h2><label class="field"><span>사진</span><input type="file" id="photoInput" accept="image/*"></label><label class="field"><span>오늘의 한마디</span><textarea id="captionInput" maxlength="180" placeholder="오늘은 목표한 만큼 해냈어요!"></textarea></label><label class="field"><span>해시태그 (선택)</span><input id="tagInput" maxlength="70" placeholder="#오늘의공부 #꾸준함"></label><div class="modalactions"><button class="secondary" data-close="postModal">취소</button><button id="publishPost">인증 올리기</button></div></div></div>
+<div class="modalback" id="goalModal"><div class="modal"><h2>오늘의 목표 🎯</h2><p class="hint">한 줄에 목표 하나씩 적어 주세요.</p><label class="field"><span>목표 목록</span><textarea id="goalInput" placeholder="수학 문제 20개 풀기&#10;영어 단어 30개 외우기"></textarea></label><div class="modalactions"><button class="secondary" data-close="goalModal">취소</button><button id="saveGoals">저장</button></div></div></div>
+
+<div class="modalback" id="textModal"><div class="modal"><h2>규칙 문구 수정</h2><label class="field"><span>규칙</span><textarea id="ruleInput"></textarea></label><div class="modalactions"><button class="secondary" data-close="textModal">취소</button><button id="saveRuleText">저장</button></div></div></div>
+<div class="modalback" id="namesModal"><div class="modal"><h2>참여자 이름 수정</h2><label class="field"><span>한 줄에 한 명씩</span><textarea id="namesInput"></textarea></label><div class="modalactions"><button class="secondary" data-close="namesModal">취소</button><button id="saveNames">저장</button></div></div></div>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const today=()=>new Date().toISOString().slice(0,10);
+const weekStart=()=>{let d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d.toISOString().slice(0,10)};
+let nick=localStorage.getItem('odstudy_nick')||'';
+let posts=JSON.parse(localStorage.getItem('odstudy_posts')||'[]');
+let goals=JSON.parse(localStorage.getItem('odstudy_goals')||'["수학 문제 20개 풀기","영어 단어 30개 외우기","국어 지문 분석 연습"]');
+let checked=JSON.parse(localStorage.getItem('odstudy_checked')||'{}');
+let view='home';
+function save(){localStorage.setItem('odstudy_posts',JSON.stringify(posts));localStorage.setItem('odstudy_goals',JSON.stringify(goals));localStorage.setItem('odstudy_checked',JSON.stringify(checked))}
+function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function openModal(id){$('#'+id).style.display='flex'} function closeModal(id){$('#'+id).style.display='none'}
+function nickStart(){if(!nick){openModal('nickModal')}else render()}
+$('#saveNick').onclick=()=>{let n=$('#nickInput').value.trim();if(!n)return alert('닉네임을 입력해 주세요.');nick=n;localStorage.setItem('odstudy_nick',nick);closeModal('nickModal');render()};
+$('#nickInput').addEventListener('keydown',e=>{if(e.key==='Enter')$('#saveNick').click()});
+function mine(){return posts.filter(p=>p.nick===nick)}
+function weeklyPosts(){return posts.filter(p=>p.date>=weekStart())}
+function streakCount(){let dates=[...new Set(mine().map(p=>p.date))].sort().reverse();let count=0,d=new Date();if(!dates.includes(today()))d.setDate(d.getDate()-1);for(;;){let s=d.toISOString().slice(0,10);if(dates.includes(s)){count++;d.setDate(d.getDate()-1)}else break}return count}
+function render(){ $('#currentNick').textContent=nick||'게스트';$('#welcomeTitle').textContent=(nick?nick+'님, ':'')+'오늘도 파이팅이에요! ☁️';$('#streak').textContent=streakCount()+'일';$('#total').textContent=mine().length+'회';$('#weekly').textContent=weeklyPosts().filter(p=>p.nick===nick).length+'회';
+let filtered=[...posts].sort((a,b)=>b.created-a.created);if(view==='friends')filtered=filtered.filter(p=>p.nick!==nick);if(view==='rank')filtered=weeklyPosts().sort((a,b)=>b.created-a.created);if(view==='calendar'){$('#feedTitle').textContent='내 인증 기록';filtered=mine().sort((a,b)=>b.created-a.created)}else if(view==='goals')$('#feedTitle').textContent='오늘의 목표';else if(view==='profile')$('#feedTitle').textContent='내 플래너 인증';else $('#feedTitle').textContent=view==='rank'?'이번 주 인증':'친구들 인증';
+let feed=$('#feed');feed.innerHTML='';if(!filtered.length){feed.innerHTML='<div class="empty">아직 인증이 없어요. 💙<br>첫 번째 플래너를 인증해 보세요!</div>'}else filtered.forEach(p=>{let el=document.createElement('article');el.className='post';el.innerHTML=`<div class="posttop"><div class="avatar">🐻‍❄️</div><b>${esc(p.nick)}</b><small>${esc(p.date)}</small></div>${p.photo?`<img class="photo" src="${p.photo}" alt="플래너 사진">`:'<div class="nopicture">📘✨</div>'}<div class="postbody"><p>${esc(p.caption||'오늘도 공부했어요!')}</p><div class="tags">${esc(p.tags||'')}</div><div class="actions"><button data-like="${p.id}">💙 ${p.likes||0}</button><span>💬 ${p.comments.length}</span>${p.nick===nick?`<button data-delete="${p.id}" style="margin-left:auto">삭제</button>`:''}</div></div><div class="comments">${p.comments.map(c=>`<p><b>${esc(c.nick)}</b> ${esc(c.text)}</p>`).join('')}<div class="commentrow"><input data-comment-input="${p.id}" placeholder="응원 한마디..." maxlength="100"><button data-comment="${p.id}">등록</button></div></div>`;feed.appendChild(el)});
+$('#ranking').innerHTML=[...new Set(posts.map(p=>p.nick))].map(n=>({n,c:weeklyPosts().filter(p=>p.nick===n).length})).sort((a,b)=>b.c-a.c).slice(0,5).map((x,i)=>`<div class="rankrow"><span class="ranknum">${i===0?'👑':i+1}</span><span>🐻 ${esc(x.n)}</span><b>${x.c}회</b></div>`).join('')||'<p class="hint">이번 주 첫 인증을 기다리고 있어요!</p>';
+renderCalendar();renderGoals();$$('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+}
+function renderCalendar(){let d=new Date(),y=d.getFullYear(),m=d.getMonth(),first=new Date(y,m,1).getDay(),last=new Date(y,m+1,0).getDate();$('#calendarTitle').textContent=`📅 ${m+1}월 인증 달력`;let done=new Set(mine().map(p=>p.date));let out=['일','월','화','수','목','금','토'].map(x=>`<span class="weekday">${x}</span>`).join('');for(let i=0;i<first;i++)out+='<span></span>';for(let i=1;i<=last;i++){let key=`${y}-${String(m+1).padStart(2,'0')}-${String(i).padStart(2,'0')}`;out+=`<span class="${done.has(key)?'done':''}">${i}</span>`}$('#calendar').innerHTML=out}
+function renderGoals(){let done=goals.filter((g,i)=>checked[today()+'_'+i]).length;$('#goals').innerHTML=goals.map((g,i)=>`<label class="goalitem"><input type="checkbox" data-goal="${i}" ${checked[today()+'_'+i]?'checked':''}><span>${esc(g)}</span></label>`).join('')||'<p class="hint">목표를 추가해 보세요.</p>';let pct=goals.length?Math.round(done/goals.length*100):0;$('#goalProgress').style.width=pct+'%';$('#goalPercent').textContent=pct+'%'}
+$('#addPost').onclick=()=>{if(!nick)return openModal('nickModal');$('#captionInput').value='';$('#tagInput').value='';$('#photoInput').value='';openModal('postModal')};
+$('#publishPost').onclick=()=>{if(!nick)return openModal('nickModal');let file=$('#photoInput').files[0];let make=photo=>{posts.unshift({id:Date.now()+Math.random(),nick,date:today(),created:Date.now(),photo:photo||'',caption:$('#captionInput').value.trim(),tags:$('#tagInput').value.trim(),likes:0,comments:[]});save();closeModal('postModal');render()};if(file){if(file.size>1.5*1024*1024)return alert('사진은 1.5MB 이하로 선택해 주세요.');let r=new FileReader();r.onload=()=>make(r.result);r.readAsDataURL(file)}else make('')};
+$('#feed').addEventListener('click',e=>{let like=e.target.closest('[data-like]');if(like){let p=posts.find(x=>String(x.id)===like.dataset.like);if(p){p.likes=(p.likes||0)+1;save();render()}return}let del=e.target.closest('[data-delete]');if(del&&confirm('이 인증을 삭제할까요?')){posts=posts.filter(p=>String(p.id)!==del.dataset.delete);save();render();return}let cb=e.target.closest('[data-comment]');if(cb){let input=$(`[data-comment-input="${cb.dataset.comment}"]`),txt=input.value.trim();if(!txt)return;let p=posts.find(x=>String(x.id)===cb.dataset.comment);p.comments.push({nick,text:txt});save();render()}});
+$('#feed').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('[data-comment-input]')){let id=e.target.dataset.commentInput;$('#feed').querySelector(`[data-comment="${id}"]`).click()}});
+$('#goals').addEventListener('change',e=>{if(e.target.dataset.goal!==undefined){let k=today()+'_'+e.target.dataset.goal;if(e.target.checked)checked[k]=true;else delete checked[k];save();renderGoals()}});
+$('#editGoals').onclick=()=>{if(!nick)return openModal('nickModal');$('#goalInput').value=goals.join('\n');openModal('goalModal')};
+$('#saveGoals').onclick=()=>{goals=$('#goalInput').value.split('\n').map(x=>x.trim()).filter(Boolean).slice(0,10);save();closeModal('goalModal');renderGoals()};
+$$('[data-close]').forEach(b=>b.onclick=()=>closeModal(b.dataset.close));
+$$('.modalback').forEach(m=>m.addEventListener('click',e=>{if(e.target===m&&m.id!=='nickModal')closeModal(m.id)}));
+$$('nav button').forEach(b=>b.onclick=()=>{if(b.dataset.view==='profile'){if(!nick)return openModal('nickModal');$('#nickInput').value=nick;openModal('nickModal');return}view=b.dataset.view;render()});
+
+const defaultRuleNames=['고민경','고민주','김가은','김서현','문현아','정혜림'];
+let ruleData=JSON.parse(localStorage.getItem('odstudy_rules')||'null')||{names:defaultRuleNames,counts:{},text:'다음 날 아침 8시까지 플래너를 올리지 않는 사람은 해당 항목에 기록해요.'};
+function saveRuleData(){localStorage.setItem('odstudy_rules',JSON.stringify(ruleData))}
+function renderRuleRows(){
+ document.querySelector('#ruleText').textContent=ruleData.text;
+ document.querySelector('#ruleRows').innerHTML=ruleData.names.map((name,ri)=>{
+  let vals=[0,1,2,3].map(ci=>Number(ruleData.counts[ri+'_'+ci]||0));
+  let sum=vals.reduce((a,b)=>a+b,0);
+  return `<tr><td>${esc(name)}</td>${vals.map((v,ci)=>`<td><div class="countctl"><button class="minus" data-rulecount="${ri}_${ci}" data-delta="-1">−</button><b>${v}</b><button data-rulecount="${ri}_${ci}" data-delta="1">+</button></div></td>`).join('')}<td class="total">${sum}</td></tr>`;
+ }).join('');
+}
+document.querySelector('#ruleRows').addEventListener('click',e=>{
+ const b=e.target.closest('[data-rulecount]');if(!b)return;
+ const key=b.dataset.rulecount;
+ ruleData.counts[key]=Math.max(0,Number(ruleData.counts[key]||0)+Number(b.dataset.delta));
+ saveRuleData();renderRuleRows();
+});
+document.querySelector('#resetRules').onclick=()=>{if(confirm('규칙표 숫자를 모두 0으로 초기화할까요?')){ruleData.counts={};saveRuleData();renderRuleRows()}};
+document.querySelector('#editRuleText').onclick=()=>{document.querySelector('#ruleInput').value=ruleData.text;openModal('textModal')};
+document.querySelector('#saveRuleText').onclick=()=>{ruleData.text=document.querySelector('#ruleInput').value.trim();saveRuleData();closeModal('textModal');renderRuleRows()};
+document.querySelector('#editNames').onclick=()=>{document.querySelector('#namesInput').value=ruleData.names.join('\n');openModal('namesModal')};
+document.querySelector('#saveNames').onclick=()=>{const names=document.querySelector('#namesInput').value.split('\n').map(x=>x.trim()).filter(Boolean).slice(0,20);if(!names.length)return alert('이름을 한 명 이상 입력해 줘.');ruleData.names=names;ruleData.counts={};saveRuleData();closeModal('namesModal');renderRuleRows()};
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close)));
+
+nickStart();render();
+renderRuleRows();
+</script>
+</body></html>
